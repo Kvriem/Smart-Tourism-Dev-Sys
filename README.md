@@ -50,23 +50,13 @@ The Smart Tourism Development System is a data-driven solution designed to impro
 
 | Phase   | Version | Tasks                                    | Status      |
 |---------|---------|------------------------------------------|-------------|
-| Phase 1 | v0.1    | Initial project setup                    | In Progress |
+| Phase 1 | v0.1    | Initial project setup                    |   Finshed   |
 | Phase 2 | v0.2    | Local data scraping                      | In Progress |
-| Phase 3 | v0.3    | Data cleaning and NLP sentiment analysis | Not Started |
+| Phase 3 | v0.3    | Data cleaning and NLP sentiment analysis | In Progress |
 | Phase 4 | v1.0    | Database deployment on AWS RDS           | Not Started |
 | Phase 5 | v1.2    | Cloud-based data processing              | Not Started |
 | Phase 6 | v2.0    | Full web application deployment          | Not Started |
 
-### How to Use
-
-1. **Setup Environment:**
-    - Install dependencies.
-    - Clone the repository and configure settings.
-2. **Run Locally:**
-    - Execute the scraper for collecting review data.
-    - Process and analyze data using built-in tools.
-3. **Deploy to Cloud:**
-    - Use AWS services to host the application and database.
 
 ### Team Members
 
