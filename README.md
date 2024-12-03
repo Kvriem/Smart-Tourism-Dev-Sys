@@ -64,7 +64,7 @@ The Smart Tourism Development System is a data-driven solution designed to impro
 - Mohamed Ashraf Mohamed
 - Kirolos Raouf Helmy
 - Ahmed Mohamed Nabil
-- Abdelrahman Mohamed Abdelnaby
+- Abdelrahman Mohamed Abdelnaby 
 - Mahmoud Mohamed Sharafy
 
 ### Supervisor
