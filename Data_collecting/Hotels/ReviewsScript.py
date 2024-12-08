@@ -13,7 +13,7 @@ from time import sleep
 
 total_requests = 0
 selenium_requests = 0
-
+ 
 # List of proxies
 #global proxies_list
 #with open (r"C:\Users\Kariem\Desktop\Capstone_Porject\repo\Smart-Tourism-Dev-Sys\Data_collecting\valid_proxies.txt", "r", encoding="utf-8") as file:
@@ -258,5 +258,5 @@ if __name__ == "__main__":
 
     print(f"Final total requests: HTTP - {total_requests}, Selenium - {selenium_requests}")
 
-
-    
+# some of Reviewer Nationality are not extracted correctly
+# there is a problem in extracting the rate of the hotel
