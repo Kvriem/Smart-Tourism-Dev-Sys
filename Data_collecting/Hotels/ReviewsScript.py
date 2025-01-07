@@ -35,7 +35,15 @@ HEADERS_LIST = [
     {"User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0"}
 ]
 
-cities=[ 'Alexandria','Sharm El Sheikh','Cairo','Ain Sokhna','Hurghada']
+#city__='Alexandria'
+
+cities=[ 'Alexandria'
+        ,'Sharm El Sheikh'
+        ,'Cairo'
+        ,'Ain Sokhna'
+        ,'Hurghada'
+        ]
+
 Cities_url=[
     'https://www.booking.com/searchresults.html?ss=Alexandria%2C+Egypt&ssne=Ain+Sokhna&ssne_untouched=Ain+Sokhna&highlighted_hotels=788831&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaEOIAQGYATG4ARfIAQ_YAQHoAQH4AQKIAgGoAgO4AtzRkroGwAIB0gIkNzI2MWQ0OTEtNzExNS00MTA4LTk0N2MtYjkwMDZmMmZlYWU32AIF4AIB&aid=304142&lang=en-us&sb=1&src_elem=sb&src=searchresults&dest_id=-290263&dest_type=city&group_adults=2&no_rooms=1&group_children=0',
     'https://www.booking.com/searchresults.html?ss=Sharm+El+Sheikh%2C+Egypt&ssne=Cairo&ssne_untouched=Cairo&highlighted_hotels=788831&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaEOIAQGYATG4ARfIAQ_YAQHoAQH4AQKIAgGoAgO4AtzRkroGwAIB0gIkNzI2MWQ0OTEtNzExNS00MTA4LTk0N2MtYjkwMDZmMmZlYWU32AIF4AIB&aid=304142&lang=en-us&sb=1&src_elem=sb&src=searchresults&dest_id=-302053&dest_type=city&group_adults=2&no_rooms=1&group_children=0',
@@ -100,28 +108,20 @@ def get_reviews(hotel_links):
     global selenium_requests
     print("Scraping reviews started")
 
-    # Define the output CSV file
-    output_file = "hotel2_reviews.csv"
-
-    # Initialize a flag to track whether headers are written
-    headers_written = False
+    output_file = "hotels_reviews3.csv"
+    reviews_data = []  # List of dictionaries to store reviews
 
     for hotel in hotel_links:
         hotelName = hotel['name']
         hotelLink = hotel['link']
-        print("Scraping reviews for", hotelName, "started")
-        selenium_requests += 1  # Increment Selenium request count
+        selenium_requests += 1
 
-        # Initialize data containers for the current hotel
-        reviewer_name, review_title, review_good_text, review_bad_text, city_name, reviewr_nationality = [], [], [], [], [] ,[]
-        travel_duration, travel_type,review_room_type,date_of_check_in,review_date ,review_rate=[], [], [], [], [] ,[]
         try:
-            # Set up the Selenium driver (Firefox)
             driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
             driver.get(hotelLink)
             sleep(3)
             
-            #Extract city name
+            # Extract city name
             try:
                 city_ = driver.find_element(By.XPATH, '//a[@class="bui_breadcrumb__link_masked"]').text
             except:
@@ -134,128 +134,42 @@ def get_reviews(hotel_links):
                 sleep(3)
             except Exception as e:
                 print(f"Error finding or clicking review button for {hotelName}: {e}")
-
+            
             # Extract review cards
             reviews_cards = driver.find_elements(By.XPATH, '//div[@data-testid="review-card"]')
-
+            
             for card in reviews_cards:
-                #append city name for each review
-                city_name.append(city_)
+                review_data = {
+                    'City': city_,
+                    "Hotel Name":hotelName,
+                    'Reviewer Name': card.find_element(By.XPATH, './/div[@aria-label="Reviewer"]//div[@class="a3332d346a e6208ee469"]').text if card.find_elements(By.XPATH, './/div[@aria-label="Reviewer"]//div[@class="a3332d346a e6208ee469"]') else "No Name",
+                    'Reviewer Nationality': card.find_element(By.XPATH, './/div[@class="abf093bdfe f45d8e4c32"]//span[@class="afac1f68d9 a1ad95c055"]').text if card.find_elements(By.XPATH, './/div[@class="abf093bdfe f45d8e4c32"]//span[@class="afac1f68d9 a1ad95c055"]') else "No Nationality",
+                    'Duration': card.find_element(By.XPATH, './/span[@data-testid="review-num-nights"]').text if card.find_elements(By.XPATH, './/span[@data-testid="review-num-nights"]') else "No Duration",
+                    'Check-in Date': card.find_element(By.XPATH, './/span[@data-testid="review-stay-date"]').text if card.find_elements(By.XPATH, './/span[@data-testid="review-stay-date"]') else "No Check-in Date",
+                    'Travel Type': card.find_element(By.XPATH, './/span[@data-testid="review-traveler-type"]').text if card.find_elements(By.XPATH, './/span[@data-testid="review-traveler-type"]') else "No Type",
+                    'Room Type': card.find_element(By.XPATH, './/span[@data-testid="review-room-name"]').text if card.find_elements(By.XPATH, './/span[@data-testid="review-room-name"]') else "No Room Type",
+                    'Review Date': card.find_element(By.XPATH, './/span[@data-testid="review-date"]').text if card.find_elements(By.XPATH, './/span[@data-testid="review-date"]') else "No Date",
+                    'Positive Review': card.find_element(By.XPATH, './/div[@aria-label="Review"]//div[@class="a53cbfa6de b5726afd0b"]').text if card.find_elements(By.XPATH, './/div[@aria-label="Review"]//div[@class="a53cbfa6de b5726afd0b"]') else "No Positive Feedback",
+                    'Negative Review': card.find_element(By.XPATH, './/div[@aria-label="Review"]//div[@data-testid="review-negative-text"]//div[@class="a53cbfa6de b5726afd0b"]').text if card.find_elements(By.XPATH, './/div[@aria-label="Review"]//div[@data-testid="review-negative-text"]//div[@class="a53cbfa6de b5726afd0b"]') else "No Negative Feedback"
+                }
+                reviews_data.append(review_data)
                 
-                # Extract reviewer name
-                try:
-                    name = card.find_element(By.XPATH, './/div[@aria-label="Reviewer"]//div[@class="a3332d346a e6208ee469"]').text
-                except:
-                    name = "No Name"
-                reviewer_name.append(name)
-                
-                # Extract reviewer nationality
-                try:
-                    nationality = card.find_element(By.XPATH, '//div[@class="abf093bdfe f45d8e4c32"]//span[@class="afac1f68d9 a1ad95c055"]').text
-                except:
-                    nationality = "No National"
-                reviewr_nationality.append(nationality)
-                
-                # Extract duration of stay
-                try:
-                    duration = card.find_element(By.XPATH, '//span[@data-testid="review-num-nights"]').text
-                except:
-                    duration = "No Duration"
-                travel_duration.append(duration)
-                
-                # Extract date of check-in
-                try:
-                    check_in = card.find_element(By.XPATH, '//span[@data-testid="review-stay-date"]').text
-                except:
-                    check_in = "No Check-in Date"
-                date_of_check_in.append(check_in)
-                
-                # Extract travel type
-                try:
-                    type_= card.find_element(By.XPATH, '//span[@data-testid="review-traveler-type"]').text
-                except:
-                    type_ = "No Type"
-                travel_type.append(type_)
-
-                # Extract room type
-                try:
-                    room = card.find_element(By.XPATH, '//span[@data-testid="review-room-name"]').text
-                except:
-                    room = "No Room type"
-                review_room_type.append(room)
-               
-                # Extract review title
-                try:
-                    title = card.find_element(By.XPATH, './/div[@aria-label="Review"]//h3[@data-testid="review-title"]').text
-                except:
-                    title = "No Title"
-                review_title.append(title)
-
-                # Extract review date 
-                try:
-                    date = card.find_element(By.XPATH, '//span[@data-testid="review-date"]').text 
-                except:
-                    date = "No Date"
-                review_date.append(date)
-
-
-                # Extract positive review text
-                try:
-                    good_text = card.find_element(By.XPATH, './/div[@aria-label="Review"]//div[@class="a53cbfa6de b5726afd0b"]').text
-                except:
-                    good_text = "No Positive Review"
-                review_good_text.append(good_text)
-
-                # Extract negative review text
-                try:
-                    bad_text = card.find_element(By.XPATH, './/div[@aria-label="Review"]//div[@data-testid="review-negative-text"]//div[@class="a53cbfa6de b5726afd0b"]').text
-                except:
-                    bad_text = "No Negative Review"
-                review_bad_text.append(bad_text)
-
-#                # Extract hotel rate 
-#                try:
-#                    rate = card.find_element(By.XPATH, '//div[@class="ac4a7896c7"]').text
-#                except:
-#                    rate = "No Rate"
-#                review_rate.append(rate)
-            # Save the current hotel's reviews to the CSV file
-            if reviewer_name:  # Check if any reviews were scraped
-                reviews_df = pd.DataFrame({
-                    "City Name": city_name,
-                    "Hotel Name": hotelName,
-                    "Reviewer Name": reviewer_name,
-                    "Reviewer Nationality": reviewr_nationality,
-                    "Review Title": review_title,
-                    "Positive Review": review_good_text,
-                    "Negative Review": review_bad_text,
-                    "Travel Duration": travel_duration,
-                    "Travel Type": travel_type,
-                    "Room Type": review_room_type,
-                    "Check-in Date": date_of_check_in,
-                    "Review Date": review_date
-#                    "Review Rate": review_rate
-                })
-
-                # Append reviews to CSV
-                reviews_df.to_csv(output_file, mode='a', index=False, header=not headers_written)
-                headers_written = True  # Set flag to skip headers for subsequent hotels
-                print(f"Appended reviews for {hotelName} to {output_file}")
-
+                # Save data to CSV
+            df = pd.DataFrame(reviews_data)
+            df.to_csv(output_file,mode='a', index=False)
+            print(f"Scraping completed. Data saved to {output_file}.")
+        
         except Exception as e:
             print(f"Error processing hotel {hotelName}: {e}")
+        
         finally:
             driver.quit()
-
-    print(f"Total Selenium requests made: {selenium_requests}")
-
-    print("Scraping reviews completed and saved to", output_file)
+    
 
 
 if __name__ == "__main__":
     hotel_links = get_hotels_in_each_city(cities, Cities_url)
     get_reviews(hotel_links)
-
     print(f"Final total requests: HTTP - {total_requests}, Selenium - {selenium_requests}")
 
 # some of Reviewer Nationality are not extracted correctly
