@@ -16,28 +16,30 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.firefox import GeckoDriverManager
 
-# -----------------------------
-# repo base Path
-# -----------------------------
-Base = r'C:\Users\Kariem\Desktop\New_folder\Smart-Tourism-Dev-Sys\Data_collecting\Hotels\new_test\\'
+import user_agent as ua
+from user_agent import generate_user_agent
 
+Base = "C:\\Users\\Kariem\\Desktop\\New_folder\\Smart-Tourism-Dev-Sys\\Data_collecting\\Hotels\\New_approach"
 # -----------------------------
 # Logging Setup
 # -----------------------------
-logging.basicConfig(filename=f'{Base}scraper.log', level=logging.INFO, format='%(asctime)s %(levelname)s:%(message)s')
+logging.basicConfig(filename=r'C:\Users\Kariem\Desktop\New_folder\Smart-Tourism-Dev-Sys\Data_collecting\Hotels\New_approach\scraper.log', level=logging.INFO, format='%(asctime)s %(levelname)s:%(message)s')
 
 # -----------------------------
 # Global Variables and File Paths
 # -----------------------------
 total_requests = 0
+
+# User-Agent Headers
+
 HEADERS_LIST = [
-    {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"},
-    {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0"},
-    {"User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0"}
+    {'User-Agent': generate_user_agent()} for _ in range(10)
 ]
-Links_csv = f'{Base}hotels_links.csv'
-HOTEL_DATA_FILE = f'{Base}hotels_data.csv'
-REVIEWS_FILE = f'{Base}hotels_reviews3.csv'
+
+Links_csv = f'{Base}\\hotels_links4.csv'
+HOTEL_DATA_FILE = f'{Base}\\hotels_data4.csv'
+REVIEWS_FILE = f'{Base}\\hotels_reviews4.csv'
+
 
 # -----------------------------
 # Utility: Safe HTTP Request
@@ -55,7 +57,7 @@ def safe_request(url, headers):
             logging.warning(f"Attempt {attempt + 1} failed for {url}: {e}")
             sleep(random.uniform(2, 5))  # Random delay to avoid detection
     return None
-
+ 
 # -----------------------------
 # Function 1: Scrape Hotel Links per City (Handles Pagination)
 # -----------------------------
@@ -205,16 +207,22 @@ def process_hotels_incrementally_from_file():
 
                 # Process reviews
                 process_reviews(driver, hotel_name, city_, review_fieldnames)
+                            # Mark hotel as scraped
+                hotel_links[idx]['Is_Scraped'] = True
+                pd.DataFrame(hotel_links).to_csv(Links_csv, index=False)
+                logging.info(f"Marked {hotel_name} as scraped.")
 
             except Exception as e:
                 logging.error(f"Error processing hotel {hotel_name}: {e}")
+                if "API rate limit exceeded" in str(e):
+                    logging.error("API rate limit exceeded. Exiting.")
+                    driver.quit()
+                    break
             finally:
                 driver.quit()
 
-            # Mark hotel as scraped
-            hotel_links[idx]['Is_Scraped'] = True
-            pd.DataFrame(hotel_links).to_csv(Links_csv, index=False)
-            logging.info(f"Marked {hotel_name} as scraped.")
+
+            
 
     logging.info("Incremental processing complete.")
 
@@ -252,6 +260,7 @@ def process_reviews(driver, hotel_name, city_, review_fieldnames):
             except Exception as e:
                 logging.warning(f"Error extracting review for {hotel_name}: {e}")
 
+
         # Handle pagination
         try:
             next_page_btn = driver.find_element(By.CSS_SELECTOR, 'span.eedba9e88a > span.fcd9eec8fb')
@@ -265,10 +274,10 @@ def process_reviews(driver, hotel_name, city_, review_fieldnames):
 # Main Execution
 # -----------------------------
 if __name__ == "__main__":
-    cities = ['Luxor', 'Hurghada']
+    cities = ['Sharm_ElSheikh', 'Aswan']
     Cities_url = [
-        'https://www.booking.com/searchresults.html?ss=Luxor%2C+Egypt',
-        'https://www.booking.com/searchresults.html?ss=Hurghada%2C+Egypt'
+        'https://www.booking.com/searchresults.html?ss=shar&label=gen173nr-1FCAEoggI46AdIM1gEaEOIAQGYATG4ARfIAQ_YAQHoAQH4AQKIAgGoAgO4AoDku70GwAIB0gIkZmE4MTAxNmItZGRiOC00ZGNjLWIxZDUtM2RjZGQ0ZWYxNmRl2AIF4AIB&aid=304142&lang=en-us&sb=1&src_elem=sb&src=index&dest_id=-302053&dest_type=city&ac_position=0&ac_click_type=b&ac_langcode=en&ac_suggestion_list_length=5&search_selected=true&search_pageview_id=68cd35409ba1044c&ac_meta=GhA2OGNkMzU0MDliYTEwNDRjIAAoATICZW46BHNoYXJAAEoAUAA%3D&group_adults=2&no_rooms=1&group_children=0',
+        'https://www.booking.com/searchresults.html?ss=Aswan%2C+Aswan+Governorate%2C+Egypt&ssne=Sharm+El+Sheikh&ssne_untouched=Sharm+El+Sheikh&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaEOIAQGYATG4ARfIAQ_YAQHoAQH4AQKIAgGoAgO4AoDku70GwAIB0gIkZmE4MTAxNmItZGRiOC00ZGNjLWIxZDUtM2RjZGQ0ZWYxNmRl2AIF4AIB&aid=304142&lang=en-us&sb=1&src_elem=sb&src=searchresults&dest_id=-291535&dest_type=city&ac_position=0&ac_click_type=b&ac_langcode=en&ac_suggestion_list_length=5&search_selected=true&search_pageview_id=685235446365131f&ac_meta=GhA2ODUyMzU0NDYzNjUxMzFmIAAoATICZW46A2Fzd0AASgBQAA%3D%3D&group_adults=2&no_rooms=1&group_children=0'
     ]
     
     # Step 1: Scrape hotel links per city
@@ -278,6 +287,5 @@ if __name__ == "__main__":
     # Step 2: Process hotels incrementally from the hotels_links file
     process_hotels_incrementally_from_file()
 
-##things to do in the future##
-#1- handle multiple pages of reviews (optional for now)
-#2- handle coruppted hotles that have true flag in hotel links (add coruppted flag to the hotel links csv)
+    logging.info(f"Scraping complete. Total HTTP requests made: {total_requests}")
+
