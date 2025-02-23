@@ -1,0 +1,11 @@
+os
+csv
+random
+logging
+time
+pandas==2.2.3 # Replace 2.2.3 with the pandas version you're using
+requests==2.2.3
+beautifulsoup4==2.2.3
+selenium==2.2.3
+webdriver-manager==2.2.3
+user-agent==2.2.3
