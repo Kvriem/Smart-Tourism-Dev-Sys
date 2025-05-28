@@ -1,9 +1,0 @@
-{
-  "name": "hotel-feedback-dashboard",
-  "version": "1.0.0",
-  "private": true,
-  "dependencies": {
-    "chart.js": "^4.4.0",
-    "react-chartjs-2": "^5.2.0"
-  }
-}
