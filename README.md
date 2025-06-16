@@ -1,150 +1,322 @@
-<<<<<<< HEAD
-# Hotel Reviews Scraping and NLP Pipeline
+# Smart Tourism Development System
 
-## Project Structure
+## Project Overview
+
+The Smart Tourism Development System is a comprehensive data-driven solution designed to enhance Egypt's tourism sector through advanced analytics, machine learning, and automated data processing. The system combines web scraping, natural language processing, sentiment analysis, and interactive dashboards to provide actionable insights for tourism stakeholders.
+
+## System Architecture
+
+### Core Components
 
 ```
 /home/kariem/airflow/
-├── dags/                          # Airflow DAGs (detected by Airflow)
-│   └── scheduled.py               # Main quarterly scraping DAG
-├── src/                           # Source code modules
-│   ├── scrapers/                  # Web scraping modules
-│   │   └── hotel_scraper.py       # Main hotel scraping logic
-│   ├── nlp/                       # NLP processing modules
-│   │   ├── NLP_Script.py          # NLP processing script
-│   │   └── preprocessing_nlp_ref/ # NLP preprocessing reference
-│   ├── config/                    # Configuration modules
-│   │   ├── scraping_config.py     # Scraping configuration
-│   │   └── webserver_config.py    # Airflow webserver config
-│   └── utils/                     # Utility modules
-│       └── drivers/               # WebDriver binaries
-├── scripts/                       # Standalone scripts
-│   ├── manual_scraper.py          # Manual scraping script
-│   ├── test_firefox.py            # Firefox testing
-│   ├── simple_firefox_test.py     # Simple Firefox test
-│   ├── fix_airflow_installation.sh
-│   └── install_firefox.sh
-├── data/                          # Data storage (empty)
-├── tests/                         # Test files (empty)
-├── logs/                          # Airflow logs
-├── config/                        # Airflow configuration
-├── requirements.txt               # Python dependencies
-├── airflow.cfg                    # Airflow configuration
-└── airflow.db                     # Airflow SQLite database
+├── dags/                           # Apache Airflow DAGs
+│   ├── scheduled.py                # Main quarterly scraping DAG
+│   └── test_simple.py              # Simple test DAG
+├── src/                            # Source code modules
+│   ├── scrapers/                   # Web scraping components
+│   │   └── hotel_scraper.py        # Main hotel scraping engine
+│   ├── nlp/                        # Natural Language Processing
+│   │   ├── preprocessing_nlp_ref/  # NLP preprocessing pipeline
+│   │   │   ├── preprocessing_script.py      # Data preprocessing
+│   │   │   ├── translation_local_gpu.py     # Translation pipeline
+│   │   │   └── nlp_processing_pipeline.py   # NLP processing
+│   │   └── NLP_Script.py           # Main NLP entry point
+│   ├── config/                     # Configuration management
+│   │   ├── scraping_config.py      # Scraping configurations
+│   │   └── webserver_config.py     # Airflow webserver config
+│   └── utils/                      # Utility modules
+├── scripts/                        # Standalone execution scripts
+│   ├── manual_scraper.py           # Manual scraping utility
+│   ├── test_firefox.py             # Browser testing
+│   └── installation scripts        # Setup utilities
+├── tests/                          # Comprehensive test suite
+├── data/                           # Data storage directory
+├── logs/                           # Application logs
+├── Home.py                         # Streamlit dashboard application
+├── requirements.txt                # Python dependencies
+└── airflow.cfg                     # Airflow configuration
 ```
 
-## Quick Start
+## Technology Stack
 
-1. **Activate Virtual Environment:**
-   ```bash
-   cd /home/kariem/airflow
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
-   ```
+### Backend Infrastructure
+- **Apache Airflow**: Workflow orchestration and scheduling
+- **PostgreSQL**: Primary data storage (Neon cloud database)
+- **Python 3.12**: Core programming language
+- **Selenium**: Web scraping automation
+- **BeautifulSoup**: HTML parsing
 
-2. **Start Airflow:**
-   ```bash
-   airflow standalone
-   ```
+### Data Processing & Analytics
+- **Pandas**: Data manipulation and analysis
+- **NLTK**: Natural language processing
+- **Deep Translator**: Multi-language translation
+- **SQLAlchemy**: Database ORM
 
-3. **Run Manual Scraping:**
-   ```bash
-   cd scripts
-   python manual_scraper.py --preset development --hotels 5
-   ```
+### Frontend & Visualization
+- **Streamlit**: Interactive web dashboard
+- **Plotly Express**: Data visualization
+- **Dash Framework**: Advanced dashboard components
 
-## Key Components
+### Machine Learning & NLP
+- **Sentiment Analysis**: Review sentiment classification
+- **Text Preprocessing**: Advanced text cleaning and normalization
+- **Language Detection**: Multi-language support
+- **Translation Pipeline**: Automated translation services
 
-- **scheduled.py**: Main Airflow DAG for quarterly hotel reviews scraping
-- **hotel_scraper.py**: Core scraping functionality
-- **scraping_config.py**: Configuration management with presets
-- **manual_scraper.py**: Manual execution script for testing
-
-## Configuration Presets
-
-- `development`: 5 hotels, 2 pages, no headless mode
-- `testing`: 10 hotels, 3 pages, headless mode
-- `production`: 50 hotels, 5 pages, headless mode
-
-## Recent Changes
-
-- Restructured project for better organization
-- Updated all import paths to use new structure
-- Created proper Python packages with `__init__.py` files
-- Moved DAGs to proper Airflow location
-- Added comprehensive configuration management
-
-﻿## Smart Tourism Development System (Not finished Yet)
+## Smart Tourism Development System
 
 ### Project Overview
 
 The Smart Tourism Development System is a data-driven solution designed to improve Egypt's tourism sector by leveraging advanced analytics and machine learning. It analyzes tourist feedback to provide actionable insights for stakeholders, fostering enhanced tourist experiences and competitive advantage.
 
-### Key Features
+## Key Features
 
-- **Automated Data Collection:** Continuous scraping of tourist feedback for up-to-date insights.
-- **Sentiment Analysis:** Categorizes feedback to measure satisfaction levels.
-- **Pain Point Identification:** Highlights recurring issues and positive aspects of tourist experiences.
-- **Development Plan Suggestions:** Prioritizes improvement recommendations.
-- **Role-Based Dashboards:** Offers tailored interfaces for government authorities and businesses.
-- **Exportable Reports:** Facilitates sharing of actionable insights.
-- **Competitor Analysis:** Benchmarks Egypt against other destinations to highlight opportunities.
-- **Predictive Analytics:** Anticipates potential challenges and opportunities using historical data.
+### 🔄 Automated Data Collection
+- **Quarterly Scraping Pipeline**: Automated collection of hotel reviews using Apache Airflow
+- **Multi-source Data Gathering**: Reviews from major travel platforms
+- **Real-time Data Processing**: Continuous data ingestion and processing
+- **Scalable Architecture**: Handles large volumes of tourism data
 
-### Target Beneficiaries
+### 🧠 Advanced NLP & Analytics
+- **Sentiment Analysis**: Automated classification of tourist feedback (positive/negative)
+- **Multi-language Support**: Translation pipeline for global review processing
+- **Text Preprocessing**: Advanced cleaning, normalization, and feature extraction
+- **Pain Point Identification**: Automated detection of recurring issues and highlights
 
-- **Government and Tourism Authorities:** Leverage data insights for strategic planning and service enhancements.
-- **Local Tourism Operators:** Improve service offerings based on real-time feedback and trends.
+### 📊 Interactive Dashboards
+- **Streamlit Web Interface**: User-friendly data exploration and visualization
+- **Role-based Views**: Tailored interfaces for different stakeholder types
+- **Real-time Analytics**: Live data visualization and reporting
+- **Exportable Reports**: PDF and CSV export capabilities
 
-### Sustainable Development Contributions
+### 🎯 Business Intelligence
+- **Competitor Analysis**: Benchmarking against other destinations
+- **Predictive Analytics**: Trend forecasting and opportunity identification
+- **Development Planning**: Data-driven improvement recommendations
+- **Performance Tracking**: Tourism metrics monitoring and reporting
 
-- **Economic Growth:** Enhances the tourism sector, increases revenue, and creates jobs.
-- **Cultural Preservation:** Promotes the maintenance of Egypt's historical and cultural sites.
+## Quick Start Guide
 
-### Tech Stack
+### 1. Environment Setup
+```bash
+# Navigate to project directory
+cd /home/kariem/airflow
 
-#### Backend
+# Activate virtual environment
+source airflow_venv/bin/activate
 
-- **Database:** MongoDB
-- **Programming Language:** Python
-- **Cloud Services:** AWS (RDS, EC2, Lambda)
+# Install dependencies
+pip install -r requirements.txt
+```
 
-#### Frontend
+### 2. Start Apache Airflow
+```bash
+# Initialize Airflow (first time only)
+airflow db init
 
-- **Framework:** Angular
+# Start Airflow webserver and scheduler
+airflow standalone
+# Access web UI at: http://localhost:8080
+```
 
-#### Analytics and Machine Learning
+### 3. Launch Dashboard
+```bash
+# Start Streamlit dashboard
+streamlit run Home.py
+# Access dashboard at: http://localhost:8501
+```
 
-- **Libraries:** Pandas, NLTK
-- **Functions:** Sentiment analysis, data visualization, and predictive modeling.
+### 4. Manual Data Collection
+```bash
+# Run manual scraping with different presets
+cd scripts
 
-#### Deployment Tools
+# Development mode (5 hotels, 2 pages, visible browser)
+python manual_scraper.py --preset development
 
-- **Hosting:** AWS Elastic Beanstalk
+# Testing mode (10 hotels, 3 pages, headless)
+python manual_scraper.py --preset testing
 
-### Project Roadmap
+# Production mode (50 hotels, 5 pages, headless)
+python manual_scraper.py --preset production
+```
 
-| Phase   | Version | Tasks                                    | Status      |
-|---------|---------|------------------------------------------|-------------|
-| Phase 1 | v0.1    | Initial project setup                    |   Finshed   |
-| Phase 2 | v0.2    | Local data scraping                      | In Progress |
-| Phase 3 | v0.3    | Data cleaning and NLP sentiment analysis | In Progress |
-| Phase 4 | v1.0    | Database deployment on AWS RDS           | Not Started |
-| Phase 5 | v1.2    | Cloud-based data processing              | Not Started |
-| Phase 6 | v2.0    | Full web application deployment          | Not Started |
+## Configuration Management
 
+### Scraping Presets
+| Preset | Hotels | Pages/Hotel | Headless | Use Case |
+|--------|--------|-------------|----------|----------|
+| `development` | 5 | 2 | No | Local testing & debugging |
+| `testing` | 10 | 3 | Yes | Integration testing |
+| `production` | 50 | 5 | Yes | Production data collection |
 
-### Team Members
+### Database Configuration
+- **Primary Database**: PostgreSQL (Neon Cloud)
+- **Connection**: Secure SSL connection
+- **Data Schema**: Bronze → Silver → Gold tier architecture
+- **Backup**: Automated daily backups
 
-- Kariem Abdelmoniem Ahmed
-- Mohamed Ashraf Mohamed
-- Kirolos Raouf Helmy
-- Ahmed Mohamed Nabil
-- Abdelrahman Mohamed Abdelnaby 
-- Mahmoud Mohamed Sharfy
+## Data Processing Pipeline
 
-### Supervisor
+### 1. Data Collection (Bronze Tier)
+- Raw hotel review scraping
+- Multi-platform data gathering
+- Data validation and quality checks
+- Initial storage in bronze tables
 
-- Dr. Mohamed Fouad
+### 2. Data Processing (Silver Tier)
+- Text preprocessing and cleaning
+- Language detection and translation
+- Sentiment analysis and classification
+- Data standardization and normalization
+
+### 3. Analytics Ready (Gold Tier)
+- Aggregated metrics and KPIs
+- Processed insights and trends
+- Dashboard-ready data views
+- Exportable analytical datasets
+
+## Architecture Highlights
+
+### Scalability Features
+- **Modular Design**: Loosely coupled components for easy scaling
+- **Containerization Ready**: Docker-compatible architecture
+- **Cloud Native**: Designed for cloud deployment
+- **Load Balancing**: Distributed processing capabilities
+
+### Data Quality Assurance
+- **Comprehensive Testing**: Full test suite for all components
+- **Data Validation**: Multi-layer validation processes
+- **Error Handling**: Robust error recovery mechanisms
+- **Monitoring**: Real-time system health monitoring
+
+## Deployment Options
+
+### Local Development
+- SQLite for local testing
+- Standalone Airflow instance
+- Local Streamlit server
+
+### Production Deployment
+- PostgreSQL cloud database
+- Distributed Airflow cluster
+- Containerized web applications
+- Load balancer configuration
+
+## Target Stakeholders
+
+### 🏛️ Government & Tourism Authorities
+- **Strategic Planning**: Data-driven policy development and resource allocation
+- **Performance Monitoring**: Tourism sector KPI tracking and benchmarking
+- **Investment Decisions**: Evidence-based infrastructure and service investments
+- **Regulatory Insights**: Understanding market dynamics and visitor needs
+
+### 🏨 Tourism Operators & Businesses
+- **Service Optimization**: Real-time feedback integration for service improvements
+- **Competitive Intelligence**: Market positioning and competitor analysis
+- **Customer Experience**: Understanding visitor satisfaction and pain points
+- **Revenue Optimization**: Data-driven pricing and service strategies
+
+### 🎓 Research & Academic Institutions
+- **Tourism Research**: Comprehensive datasets for academic studies
+- **Trend Analysis**: Long-term tourism pattern identification
+- **Economic Impact**: Tourism sector contribution analysis
+- **Innovation Development**: Technology advancement in tourism analytics
+
+## Sustainable Development Impact
+
+### 📈 Economic Growth
+- **Revenue Enhancement**: Improved tourism experiences leading to increased visitor spending
+- **Job Creation**: Tourism sector expansion and employment opportunities
+- **Investment Attraction**: Data-driven insights attracting tourism investments
+- **SME Support**: Empowering small tourism businesses with market intelligence
+
+### 🏛️ Cultural Preservation
+- **Heritage Site Monitoring**: Visitor impact assessment on historical sites
+- **Cultural Experience Enhancement**: Improving cultural tourism offerings
+- **Sustainable Tourism**: Balancing preservation with visitor experience
+- **Community Engagement**: Local community involvement in tourism development
+
+### 🌍 Environmental Sustainability
+- **Sustainable Practices**: Promoting eco-friendly tourism initiatives
+- **Resource Management**: Optimizing tourism infrastructure usage
+- **Impact Assessment**: Environmental impact monitoring and mitigation
+- **Green Tourism**: Supporting sustainable tourism development
+
+## Technical Specifications
+
+### Technology Stack
+
+#### Backend Infrastructure
+- **Database**: PostgreSQL (Neon Cloud)
+- **Programming Language**: Python 3.12
+- **Web Framework**: Streamlit + Dash
+- **Workflow Orchestration**: Apache Airflow 2.8.4
+
+#### Data Processing & Analytics
+- **Data Manipulation**: Pandas 2.1.4
+- **NLP Libraries**: NLTK 3.8.1, Deep Translator
+- **Web Scraping**: Selenium 4.15.2, BeautifulSoup
+- **Database ORM**: SQLAlchemy, psycopg2-binary
+
+#### Machine Learning & Analytics
+- **Sentiment Analysis**: Custom NLP pipeline
+- **Translation**: Multi-language translation support
+- **Text Processing**: Advanced preprocessing and normalization
+- **Visualization**: Plotly Express, interactive charts
+
+### System Requirements
+- **Python**: 3.12+
+- **Operating System**: Linux (Ubuntu 20.04+ recommended)
+- **Memory**: 8GB RAM minimum, 16GB recommended
+- **Storage**: 50GB available space
+- **Network**: Stable internet connection for data collection
+
+## Project Status & Development Roadmap
+
+### ✅ Completed Phases
+| Phase | Version | Deliverables | Status |
+|-------|---------|-------------|--------|
+| Phase 1 | v0.1 | Initial project setup & architecture | ✅ **Completed** |
+| Phase 2 | v0.2 | Local data scraping implementation | ✅ **Completed** |
+| Phase 3 | v0.3 | NLP preprocessing & sentiment analysis | ✅ **Completed** |
+| Phase 4 | v1.0 | Cloud database deployment | ✅ **Completed** |
+| Phase 5 | v1.2 | ~~Cloud-based data processing~~ | ❌ **Cancelled** |
+| Phase 6 | v2.0 | Full web application deployment | ✅ **Completed** |
+
+### 🚧 Current Development (v2.1)
+- [ ] **Enhanced Analytics**: Advanced statistical analysis and reporting
+- [ ] **Real-time Processing**: Live data streaming and processing
+- [ ] **API Development**: RESTful API for external integrations
+- [ ] **Mobile Dashboard**: Responsive mobile interface
+- [ ] **Performance Optimization**: System performance enhancements
+
+### 🔮 Future Enhancements (v3.0+)
+- [ ] **AI-Powered Insights**: Machine learning recommendation engine
+- [ ] **Predictive Analytics**: Tourism trend forecasting models
+- [ ] **Multi-source Integration**: Social media and review platform expansion
+- [ ] **Real-time Alerts**: Automated issue detection and notification system
+- [ ] **Advanced Security**: Enhanced data protection and access controls
+
+## Team & Academic Supervision
+
+### Core Development Team
+- **Kariem Abdelmoniem Ahmed** - Project Lead & Data Engineering
+- **Mohamed Ashraf Mohamed** -  Frontend Development & Data Analytics
+- **Kirolos Raouf Helmy** - NLP & Machine Learning 
+- **Ahmed Mohamed Nabil** - Frontend Development & Data Analytics
+- **Abdelrahman Mohamed Abdelnaby** - Backend & Quality Assurnce 
+- **Mahmoud Mohamed Sharfy** - Frontend Development & Data Analytics
+
+### Academic Supervision
+- **Dr. Mohamed Fouad** - Project Supervisor & Technical Advisor
+
+## License & Contact
+
+This project is developed for academic and research purposes. For technical support, feature requests, or collaboration opportunities, please contact the development team through the project repository or academic institution channels.
+
+---
+
+*Smart Tourism Development System - Enhancing Egypt's Tourism Through Data-Driven Intelligence*
 
