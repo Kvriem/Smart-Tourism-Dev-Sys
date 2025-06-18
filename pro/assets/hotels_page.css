@@ -1,0 +1,305 @@
+/* ===== HOTELS PAGE SPECIFIC STYLES ===== */
+
+/* Hotels Header */
+.hotels-header {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hotels-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: hotelShine 4s infinite;
+}
+
+@keyframes hotelShine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+/* Enhanced Title Styling */
+.enhanced-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.enhanced-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #4f46e5;
+    display: flex;
+    align-items: center;
+}
+
+/* Hotel Selection Section */
+.hotel-selection-section {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Chart Containers */
+.chart-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.chart-container {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+/* Performance Section */
+.hotel-performance-section {
+    margin-bottom: 3rem;
+}
+
+/* Sentiment Analysis Section */
+.sentiment-analysis-section {
+    background: linear-gradient(145deg, #fefefe 0%, #f8fafc 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid #e11d48;
+}
+
+/* Token Analysis Section */
+.token-analysis-section {
+    background: linear-gradient(145deg, #fefefe 0%, #f0fdf4 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid #22c55e;
+}
+
+/* Review Highlights Section */
+.review-highlights-section {
+    background: linear-gradient(145deg, #fefefe 0%, #fffbeb 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid #f59e0b;
+}
+
+/* Demographics Section */
+.demographics-section {
+    background: linear-gradient(145deg, #fefefe 0%, #f0f9ff 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid #3b82f6;
+}
+
+/* Comparative Analysis Section */
+.comparative-analysis-section {
+    background: linear-gradient(145deg, #fefefe 0%, #faf5ff 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid #8b5cf6;
+}
+
+/* Hotel Content Styles */
+.hotels-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Metric Cards */
+.metric-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Token Analysis Specific */
+.token-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #22c55e;
+}
+
+.token-negative {
+    border-left-color: #ef4444;
+}
+
+/* Review Quote Styling */
+.review-quote {
+    background: #f8fafc;
+    border-left: 4px solid #3b82f6;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+}
+
+.review-quote-negative {
+    border-left-color: #ef4444;
+    background: #fef2f2;
+}
+
+.review-quote-positive {
+    border-left-color: #22c55e;
+    background: #f0fdf4;
+}
+
+/* Demographics Charts */
+.demographics-chart {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hotels-header {
+        padding: 2rem 1rem;
+    }
+    
+    .enhanced-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .chart-container {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hotels-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .enhanced-title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .enhanced-subtitle {
+        font-size: 1.125rem;
+    }
+    
+    .section-title {
+        font-size: 1.25rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .hotel-selection-section,
+    .sentiment-analysis-section,
+    .token-analysis-section,
+    .review-highlights-section,
+    .demographics-section,
+    .comparative-analysis-section {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .enhanced-title {
+        font-size: 1.75rem;
+    }
+    
+    .enhanced-subtitle {
+        font-size: 1rem;
+    }
+    
+    .chart-container {
+        padding: 0.75rem;
+    }
+    
+    .metric-card {
+        padding: 1rem;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading States */
+.loading-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
+    background-size: 400% 100%;
+    animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: -100% 50%;
+    }
+}

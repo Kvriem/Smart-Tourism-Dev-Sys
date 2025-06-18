@@ -1,0 +1,764 @@
+/* ===== HOTELS PAGE SPECIFIC STYLES ===== */
+
+/* Hotels Header */
+.hotels-header {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hotels-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: hotelShine 4s infinite;
+}
+
+@keyframes hotelShine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+/* Enhanced Title Styling */
+.enhanced-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.enhanced-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #4f46e5;
+    display: flex;
+    align-items: center;
+}
+
+/* Hotel Selection Section */
+.hotel-selection-section {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Chart Containers */
+.chart-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.chart-container {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+/* Performance Section */
+.hotel-performance-section {
+    margin-bottom: 3rem;
+}
+
+/* Sentiment Analysis Section */
+.sentiment-analysis-section {
+    background: linear-gradient(145deg, #fefefe 0%, #f8fafc 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid #e11d48;
+}
+
+/* Token Analysis Section */
+.token-analysis-section {
+    background: linear-gradient(145deg, #fefefe 0%, #f0fdf4 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid #22c55e;
+}
+
+/* Review Highlights Section */
+.review-highlights-section {
+    background: linear-gradient(145deg, #fefefe 0%, #fffbeb 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid #f59e0b;
+}
+
+/* Demographics Section */
+.demographics-section {
+    background: linear-gradient(145deg, #fefefe 0%, #f0f9ff 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid #3b82f6;
+}
+
+/* Comparative Analysis Section */
+.comparative-analysis-section {
+    background: linear-gradient(145deg, #fefefe 0%, #faf5ff 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid #8b5cf6;
+}
+
+/* Hotel Content Styles */
+.hotels-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Metric Cards */
+.metric-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Enhanced Hotel KPI Cards */
+.hotel-kpi-cards-row {
+    margin-bottom: 2.5rem;
+    padding: 0 15px;
+}
+
+.hotel-kpi-card-column {
+    padding: 0 15px;
+    margin-bottom: 20px;
+}
+
+.hotel-kpi-stat-card {
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #ffffff, #f8fafb);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+    position: relative;
+    height: 180px;
+}
+
+.hotel-kpi-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--hotel-card-accent-color), var(--hotel-card-accent-light));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hotel-kpi-stat-card:hover::before {
+    opacity: 1;
+}
+
+.hotel-kpi-stat-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.hotel-kpi-card-body {
+    padding: 2rem 1.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hotel-kpi-card-content {
+    text-align: center;
+    width: 100%;
+}
+
+.hotel-kpi-icon-container {
+    margin-bottom: 1rem;
+    padding: 15px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--hotel-icon-bg-color), var(--hotel-icon-bg-light));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.hotel-kpi-stat-card:hover .hotel-kpi-icon-container {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hotel-kpi-card-title {
+    color: #4a5568;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.hotel-kpi-card-value {
+    color: #1a202c;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* Individual Hotel KPI Card Colors */
+.hotel-kpi-hotels-card {
+    --hotel-card-accent-color: #4C6EF5;
+    --hotel-card-accent-light: #748FFC;
+    --hotel-icon-bg-color: rgba(76, 110, 245, 0.1);
+    --hotel-icon-bg-light: rgba(116, 143, 252, 0.05);
+}
+
+.hotel-kpi-reviews-card {
+    --hotel-card-accent-color: #51CF66;
+    --hotel-card-accent-light: #8CE99A;
+    --hotel-icon-bg-color: rgba(81, 207, 102, 0.1);
+    --hotel-icon-bg-light: rgba(140, 233, 154, 0.05);
+}
+
+.hotel-kpi-sentiment-card {
+    --hotel-card-accent-color: #FF8C42;
+    --hotel-card-accent-light: #FFB366;
+    --hotel-icon-bg-color: rgba(255, 140, 66, 0.1);
+    --hotel-icon-bg-light: rgba(255, 179, 102, 0.05);
+}
+
+.hotel-kpi-top-card {
+    --hotel-card-accent-color: #20E3B2;
+    --hotel-card-accent-light: #5CECCC;
+    --hotel-icon-bg-color: rgba(32, 227, 178, 0.1);
+    --hotel-icon-bg-light: rgba(92, 236, 204, 0.05);
+}
+
+.hotel-kpi-consistency-card {
+    --hotel-card-accent-color: #FF8C42;
+    --hotel-card-accent-light: #FFB366;
+    --hotel-icon-bg-color: rgba(255, 140, 66, 0.1);
+    --hotel-icon-bg-light: rgba(255, 179, 102, 0.05);
+}
+
+.hotel-kpi-performance-card {
+    --hotel-card-accent-color: #20E3B2;
+    --hotel-card-accent-light: #5CECCC;
+    --hotel-icon-bg-color: rgba(32, 227, 178, 0.1);
+    --hotel-icon-bg-light: rgba(92, 236, 204, 0.05);
+}
+
+/* Additional Comparative Analysis KPI Card Colors */
+.hotel-kpi-ranking-card {
+    --hotel-card-accent-color: #4C6EF5;
+    --hotel-card-accent-light: #748FFC;
+    --hotel-icon-bg-color: rgba(76, 110, 245, 0.1);
+    --hotel-icon-bg-light: rgba(116, 143, 252, 0.05);
+}
+
+.hotel-kpi-market-share-card {
+    --hotel-card-accent-color: #51CF66;
+    --hotel-card-accent-light: #8CE99A;
+    --hotel-icon-bg-color: rgba(81, 207, 102, 0.1);
+    --hotel-icon-bg-light: rgba(140, 233, 154, 0.05);
+}
+
+.hotel-kpi-vs-city-card {
+    --hotel-card-accent-color: #FF8C42;
+    --hotel-card-accent-light: #FFB366;
+    --hotel-icon-bg-color: rgba(255, 140, 66, 0.1);
+    --hotel-icon-bg-light: rgba(255, 179, 102, 0.05);
+}
+
+.hotel-kpi-competitors-card {
+    --hotel-card-accent-color: #20E3B2;
+    --hotel-card-accent-light: #5CECCC;
+    --hotel-icon-bg-color: rgba(32, 227, 178, 0.1);
+    --hotel-icon-bg-light: rgba(92, 236, 204, 0.05);
+}
+
+.hotel-kpi-best-hotel-card {
+    --hotel-card-accent-color: #FFD700;
+    --hotel-card-accent-light: #FFED4A;
+    --hotel-icon-bg-color: rgba(255, 215, 0, 0.1);
+    --hotel-icon-bg-light: rgba(255, 237, 74, 0.05);
+}
+
+.hotel-kpi-best-score-card {
+    --hotel-card-accent-color: #FF8C42;
+    --hotel-card-accent-light: #FFB366;
+    --hotel-icon-bg-color: rgba(255, 140, 66, 0.1);
+    --hotel-icon-bg-light: rgba(255, 179, 102, 0.05);
+}
+
+.hotel-kpi-best-city-card {
+    --hotel-card-accent-color: #51CF66;
+    --hotel-card-accent-light: #8CE99A;
+    --hotel-icon-bg-color: rgba(81, 207, 102, 0.1);
+    --hotel-icon-bg-light: rgba(140, 233, 154, 0.05);
+}
+
+.hotel-kpi-avg-performance-card {
+    --hotel-card-accent-color: #20E3B2;
+    --hotel-card-accent-light: #5CECCC;
+    --hotel-icon-bg-color: rgba(32, 227, 178, 0.1);
+    --hotel-icon-bg-light: rgba(92, 236, 204, 0.05);
+}
+
+/* Glow effects for additional comparative cards */
+.hotel-kpi-ranking-card:hover {
+    box-shadow: 0 20px 40px rgba(76, 110, 245, 0.2), 0 0 30px rgba(76, 110, 245, 0.1);
+}
+
+.hotel-kpi-market-share-card:hover {
+    box-shadow: 0 20px 40px rgba(81, 207, 102, 0.2), 0 0 30px rgba(81, 207, 102, 0.1);
+}
+
+.hotel-kpi-vs-city-card:hover {
+    box-shadow: 0 20px 40px rgba(255, 140, 66, 0.2), 0 0 30px rgba(255, 140, 66, 0.1);
+}
+
+.hotel-kpi-competitors-card:hover {
+    box-shadow: 0 20px 40px rgba(32, 227, 178, 0.2), 0 0 30px rgba(32, 227, 178, 0.1);
+}
+
+.hotel-kpi-best-hotel-card:hover {
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2), 0 0 30px rgba(255, 215, 0, 0.1);
+}
+
+.hotel-kpi-best-score-card:hover {
+    box-shadow: 0 20px 40px rgba(255, 140, 66, 0.2), 0 0 30px rgba(255, 140, 66, 0.1);
+}
+
+.hotel-kpi-best-city-card:hover {
+    box-shadow: 0 20px 40px rgba(81, 207, 102, 0.2), 0 0 30px rgba(81, 207, 102, 0.1);
+}
+
+.hotel-kpi-avg-performance-card:hover {
+    box-shadow: 0 20px 40px rgba(32, 227, 178, 0.2), 0 0 30px rgba(32, 227, 178, 0.1);
+}
+
+/* Pulse animation for hotel KPI values */
+@keyframes hotelPulseValue {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.hotel-kpi-card-value {
+    animation: hotelPulseValue 2s ease-in-out infinite;
+}
+
+.hotel-kpi-stat-card:hover .hotel-kpi-card-value {
+    animation-duration: 1s;
+}
+
+/* Enhanced Chart Container for Sentiment by Nationality */
+.enhanced-chart-container {
+    background: linear-gradient(145deg, #ffffff, #f8fafb);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.enhanced-chart-container .alert {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Compact Hotel Overview KPI Cards - Enhanced */
+.compact-kpi-cards-row {
+    margin-bottom: 1.5rem;
+    padding: 0 8px;
+    display: flex;
+    gap: 12px;
+}
+
+.compact-kpi-card-column {
+    flex: 1;
+    min-width: 0;
+}
+
+.compact-kpi-stat-card {
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #ffffff, #f8fafb);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+    position: relative;
+    height: 90px;
+    border-left: 3px solid var(--compact-card-accent-color);
+}
+
+.compact-kpi-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    border-left-width: 4px;
+}
+
+.compact-kpi-card-body {
+    padding: 0.7rem 0.6rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.compact-kpi-card-content {
+    text-align: center;
+    width: 100%;
+}
+
+.compact-kpi-icon-container {
+    margin-bottom: 0.4rem;
+    padding: 6px;
+    border-radius: 50%;
+    background: var(--compact-icon-bg-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    width: 30px;
+    height: 30px;
+}
+
+.compact-kpi-stat-card:hover .compact-kpi-icon-container {
+    transform: scale(1.1);
+    background: var(--compact-card-accent-color);
+}
+
+.compact-kpi-stat-card:hover .compact-kpi-icon-container i {
+    color: white !important;
+}
+
+.compact-kpi-card-title {
+    color: #64748B;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+}
+
+.compact-kpi-card-value {
+    color: #1E293B;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* Compact KPI Card Color Themes */
+.compact-kpi-hotels-card {
+    --compact-card-accent-color: #6366F1;
+    --compact-icon-bg-color: rgba(99, 102, 241, 0.1);
+}
+
+.compact-kpi-reviews-card {
+    --compact-card-accent-color: #10B981;
+    --compact-icon-bg-color: rgba(16, 185, 129, 0.1);
+}
+
+.compact-kpi-sentiment-card {
+    --compact-card-accent-color: #F59E0B;
+    --compact-icon-bg-color: rgba(245, 158, 11, 0.1);
+}
+
+.compact-kpi-top-card, .compact-kpi-performance-card {
+    --compact-card-accent-color: #8B5CF6;
+    --compact-icon-bg-color: rgba(139, 92, 246, 0.1);
+}
+
+.compact-kpi-consistency-card {
+    --compact-card-accent-color: #F59E0B;
+    --compact-icon-bg-color: rgba(245, 158, 11, 0.1);
+}
+
+/* Hover effects for compact cards */
+.compact-kpi-hotels-card:hover {
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+}
+
+.compact-kpi-reviews-card:hover {
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+}
+
+.compact-kpi-sentiment-card:hover, .compact-kpi-consistency-card:hover {
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.15);
+}
+
+.compact-kpi-top-card:hover, .compact-kpi-performance-card:hover {
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+}
+
+/* Responsive design for compact cards */
+@media (max-width: 768px) {
+    .compact-kpi-cards-row {
+        gap: 8px;
+        padding: 0 5px;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .compact-kpi-card-column {
+        flex-basis: calc(50% - 4px);
+        margin-bottom: 10px;
+    }
+    
+    .compact-kpi-stat-card {
+        height: 85px;
+    }
+    
+    .compact-kpi-card-body {
+        padding: 0.6rem 0.5rem;
+    }
+    
+    .compact-kpi-card-value {
+        font-size: 1rem;
+    }
+    
+    .compact-kpi-card-title {
+        font-size: 0.65rem;
+    }
+    
+    .compact-kpi-icon-container {
+        width: 26px;
+        height: 26px;
+        padding: 5px;
+    }
+    
+    .compact-kpi-icon-container i {
+        font-size: 1.2rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .compact-kpi-stat-card {
+        height: 85px;
+    }
+    
+    .compact-kpi-card-value {
+        font-size: 1.1rem;
+    }
+    
+    .compact-kpi-card-title {
+        font-size: 0.65rem;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hotels-header {
+        padding: 2rem 1rem;
+    }
+    
+    .enhanced-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .chart-container {
+        padding: 1rem;
+    }
+    
+    .hotel-kpi-cards-row {
+        padding: 0 10px;
+    }
+    
+    .hotel-kpi-card-column {
+        padding: 0 10px;
+        margin-bottom: 15px;
+    }
+    
+    .hotel-kpi-stat-card {
+        height: 160px;
+    }
+    
+    .hotel-kpi-card-body {
+        padding: 1.5rem 1rem;
+    }
+    
+    .hotel-kpi-card-value {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hotels-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .enhanced-title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .enhanced-subtitle {
+        font-size: 1.125rem;
+    }
+    
+    .section-title {
+        font-size: 1.25rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .hotel-selection-section,
+    .sentiment-analysis-section,
+    .token-analysis-section,
+    .review-highlights-section,
+    .demographics-section,
+    .comparative-analysis-section {
+        padding: 1.5rem;
+    }
+    
+    .hotel-kpi-cards-row {
+        margin-bottom: 2rem;
+    }
+    
+    .hotel-kpi-stat-card {
+        height: 140px;
+        margin-bottom: 15px;
+    }
+    
+    .hotel-kpi-card-body {
+        padding: 1.2rem 0.8rem;
+    }
+    
+    .hotel-kpi-card-value {
+        font-size: 1.6rem;
+    }
+    
+    .hotel-kpi-card-title {
+        font-size: 0.85rem;
+    }
+    
+    .hotel-kpi-icon-container {
+        padding: 12px;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hotel-kpi-icon-container i {
+        font-size: 2rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .enhanced-title {
+        font-size: 1.75rem;
+    }
+    
+    .enhanced-subtitle {
+        font-size: 1rem;
+    }
+    
+    .chart-container {
+        padding: 0.75rem;
+    }
+    
+    .metric-card {
+        padding: 1rem;
+    }
+    
+    .hotel-kpi-stat-card {
+        height: 120px;
+    }
+    
+    .hotel-kpi-card-value {
+        font-size: 1.4rem;
+    }
+    
+    .hotel-kpi-card-title {
+        font-size: 0.8rem;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading States */
+.loading-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
+    background-size: 400% 100%;
+    animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: -100% 50%;
+    }
+}
