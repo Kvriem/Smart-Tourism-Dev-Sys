@@ -62,6 +62,9 @@ The project includes comprehensive documentation and visual resources:
 - **ClassDiagram v3.jpg**: Object-oriented design structure
 - **UseCaseDiagram_V2.2.png**: Use case specifications
 
+![System Architecture Overview](Documentation/System Architecture.png)
+*High-level system architecture overview showing component interactions and data flow*
+
 ### 🗄️ Database Design
 - **Database Schema.jpg**: Database structure and relationships
 - **StarSchema_erd.png**: Star schema for analytics
@@ -208,6 +211,9 @@ python manual_scraper.py --preset production
 - **Backup**: Automated daily backups
 
 ## Data Processing Pipeline
+
+![Modern Data Warehouse Architecture](Documentation/project_arch.jpeg)
+*Modern Data Warehouse Architecture - Bronze, Silver, Gold tier data processing pipeline*
 
 ### 1. Data Collection (Bronze Tier)
 - Raw hotel review scraping
