@@ -1,0 +1,118 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+airflow_env/
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+airflow.db
+
+# Logs
+logs/
+*.log
+*.log.*
+translation_pipeline.log
+preprocessing.log
+translation.log
+
+# Airflow specific
+airflow.cfg
+airflow.db
+airflow-webserver.pid
+airflow-scheduler.pid
+
+# Cache directories
+cache/
+.cache/
+
+# Data directories
+data/
+nltk_data/
+
+# Version directories (exclude v1 and v2)
+v1/
+v2/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+=10.0.0
+
+# Test files
+test_*.py
+*_test.py
+
+# Requirements files (keep main one, ignore optimized versions)
+requirements-optimized.txt
+requirements-ultra-optimized.txt
+
+# Documentation (exclude all docs)
+docs/
+
+# Configuration files with sensitive data
+*.cfg
+config/
+!config/__init__.py
+
+# Exclude optimized versions and ultra optimized files
+*optimized*
+*ultra*
+
+# Core processing files to exclude
+hotel_scraper.py
+nlp_processing_pipeline.py
+preprocessing_script.py
+translation_local_gpu.py
+
+# Utils directory
+utils/
+
+# Translation and processing outputs
+*.json
+validation_results_*.json
