@@ -1,8 +1,10 @@
-# Python
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+
+# Distribution / packaging
 .Python
 build/
 develop-eggs/
@@ -23,13 +25,36 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
 # Virtual environments
 airflow_env/
+airflow_venv/
 venv/
 env/
 ENV/
 .venv/
-.ENV/
+.env
+env.bak/
+venv.bak/
 
 # Database files
 *.db
@@ -50,6 +75,7 @@ airflow.cfg
 airflow.db
 airflow-webserver.pid
 airflow-scheduler.pid
+standalone_admin_password.txt
 
 # Cache directories
 cache/
@@ -59,7 +85,7 @@ cache/
 data/
 nltk_data/
 
-# Version directories (exclude v1 and v2)
+# Version directories (exclude v1 and v2 as they are development versions)
 v1/
 v2/
 
@@ -84,7 +110,7 @@ Thumbs.db
 *.temp
 =10.0.0
 
-# Test files
+# Test files (exclude standalone test files)
 test_*.py
 *_test.py
 
@@ -92,25 +118,25 @@ test_*.py
 requirements-optimized.txt
 requirements-ultra-optimized.txt
 
-# Documentation (exclude all docs)
+# Documentation (exclude all docs as they're available in the repo)
 docs/
 
 # Configuration files with sensitive data
-*.cfg
 config/
 !config/__init__.py
+!config/scraping_config.py
 
-# Exclude optimized versions and ultra optimized files
+# Exclude optimized versions and ultra optimized files (development artifacts)
 *optimized*
 *ultra*
 
-# Core processing files to exclude
+# Core processing files to exclude (these are development versions)
 hotel_scraper.py
 nlp_processing_pipeline.py
 preprocessing_script.py
 translation_local_gpu.py
 
-# Utils directory
+# Utils directory (development utilities)
 utils/
 
 # Translation and processing outputs

@@ -9,14 +9,14 @@ import os
 import time
 import pandas as pd
 
-# Add the project directory to Python path to import our modules
-sys.path.append('/home/kariem/newapproach')
+# Add the src directory to Python path to import our modules
+sys.path.append('/home/kariem/airflow/src')
 
 # Import configuration utility
 from config.scraping_config import config_manager, load_preset
 
 # Import functions from hotel_scraper.py
-from hotel_scraper import (
+from scrapers.hotel_scraper import (
     initialize_logging,
     create_db_connection,
     create_reviews_table,
@@ -30,7 +30,7 @@ from hotel_scraper import (
 )
 
 # Import preprocessing functions
-from preprocessing_script import (
+from nlp.preprocessing_nlp_ref.preprocessing_script import (
     create_db_engine,
     ensure_schema_and_table_exist,
     read_from_bronze_table,
@@ -39,7 +39,7 @@ from preprocessing_script import (
 )
 
 # Import translation functions
-from translation_local_gpu import (
+from nlp.preprocessing_nlp_ref.translation_local_gpu import (
     create_optimized_engine,
     read_data_optimized,
     ensure_table_exists_optimized,
@@ -50,7 +50,7 @@ from translation_local_gpu import (
 )
 
 # Import NLP processing pipeline functions
-from nlp_processing_pipeline import (
+from nlp.preprocessing_nlp_ref.nlp_processing_pipeline import (
     setup_libraries,
     connect_and_fetch_data,
     preprocess_data,
