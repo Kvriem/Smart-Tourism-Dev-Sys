@@ -72,6 +72,16 @@ The project includes comprehensive documentation and visual resources:
 - **NLP_activity_diagram_v2.1.png**: NLP processing workflow
 - **ScrapingActivityDaigram_v2.0.png**: Web scraping process flow
 
+### 🔄 Apache Airflow DAG Screenshots
+- **image.png**: Airflow DAG interface and task visualization
+- **image1.png**: DAG execution and monitoring dashboard
+
+![Airflow DAG Interface](Documentation/image.png)
+*Airflow DAG interface showing the Smart Tourism data pipeline tasks and dependencies*
+
+![DAG Execution Dashboard](Documentation/image1.png)
+*DAG execution monitoring dashboard with task status and performance metrics*
+
 ### 🎨 Dashboard Screenshots
 - **Charts Page.jpg**: Analytics and visualization page
 - **Full view page.jpg**: Detailed data view
