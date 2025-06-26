@@ -9,10 +9,11 @@ The Smart Tourism Development System is a comprehensive data-driven solution des
 ### Core Components
 
 ```
-/home/kariem/airflow/
+/home/kariem/newapproach/
 ├── dags/                           # Apache Airflow DAGs
 │   ├── scheduled.py                # Main quarterly scraping DAG
-│   └── test_simple.py              # Simple test DAG
+│   ├── optimized_scheduled.py      # Optimized version of the DAG
+│   └── ultra_optimized_*.py        # Ultra-optimized DAG versions
 ├── src/                            # Source code modules
 │   ├── scrapers/                   # Web scraping components
 │   │   └── hotel_scraper.py        # Main hotel scraping engine
@@ -25,18 +26,57 @@ The Smart Tourism Development System is a comprehensive data-driven solution des
 │   ├── config/                     # Configuration management
 │   │   ├── scraping_config.py      # Scraping configurations
 │   │   └── webserver_config.py     # Airflow webserver config
-│   └── utils/                      # Utility modules
+│   ├── utils/                      # Utility modules
+│   └── Back-up/                    # Backup files and versions
+├── config/                         # Root-level configuration
+│   ├── scraping_config.py          # Scraping configuration
+│   └── optimized_config.py         # Optimized configurations
 ├── scripts/                        # Standalone execution scripts
 │   ├── manual_scraper.py           # Manual scraping utility
 │   ├── test_firefox.py             # Browser testing
 │   └── installation scripts        # Setup utilities
 ├── tests/                          # Comprehensive test suite
+├── Documentation/                  # Project documentation
 ├── data/                           # Data storage directory
 ├── logs/                           # Application logs
 ├── Home.py                         # Streamlit dashboard application
-├── requirements.txt                # Python dependencies
+├── airflow_env/                    # Virtual environment
+├── webserver_config.py             # Airflow webserver configuration
 └── airflow.cfg                     # Airflow configuration
 ```
+
+## Documentation & Visual Resources
+
+The project includes comprehensive documentation and visual resources:
+
+### 📋 Project Documentation
+- **Smart_Tourism_Requirements_Document.pdf**: Complete requirements specification
+- **SmartTourismDevSys_Proposal.pdf**: Project proposal and overview
+- **Smart_Tourism_Dev_Sys-documention_V3.docx**: Detailed technical documentation
+- **IMPLEMENTATION_DOCUMENTATION.md**: Implementation details and setup guide
+
+### 📊 System Diagrams & Architecture
+- **System Architecture.png**: High-level system architecture overview
+- **DataFlowDiagramV2.1.png**: Data flow visualization
+- **SequenceDiagram_V2.0.png**: System interaction sequences
+- **ClassDiagram v3.jpg**: Object-oriented design structure
+- **UseCaseDiagram_V2.2.png**: Use case specifications
+
+### 🗄️ Database Design
+- **Database Schema.jpg**: Database structure and relationships
+- **StarSchema_erd.png**: Star schema for analytics
+- **Web-DashBoard-ERD.png**: Dashboard database design
+- **RawDataStorage_ERD.png**: Raw data storage schema
+
+### 🔄 Process Flow Diagrams
+- **NLP_activity_diagram_v2.1.png**: NLP processing workflow
+- **ScrapingActivityDaigram_v2.0.png**: Web scraping process flow
+
+### 🎨 Dashboard Screenshots
+- **Charts Page.jpg**: Analytics and visualization page
+- **Full view page.jpg**: Detailed data view
+- **Selecting City Page.jpg**: City selection interface
+- **Strat Page.jpg**: Strategy and planning interface
 
 ## Technology Stack
 
@@ -101,13 +141,13 @@ The Smart Tourism Development System is a data-driven solution designed to impro
 ### 1. Environment Setup
 ```bash
 # Navigate to project directory
-cd /home/kariem/airflow
+cd /home/kariem/newapproach
 
 # Activate virtual environment
-source airflow_venv/bin/activate
+source airflow_env/bin/activate
 
 # Install dependencies
-pip install -r requirements.txt
+pip install -r requirments/requirements.txt
 ```
 
 ### 2. Start Apache Airflow
@@ -191,18 +231,34 @@ python manual_scraper.py --preset production
 - **Error Handling**: Robust error recovery mechanisms
 - **Monitoring**: Real-time system health monitoring
 
+### Development & Optimization Versions
+- **v1/**: Initial optimization implementations
+  - `optimized_preprocessing.py`: First-generation optimized data processing
+  - `optimized_translation.py`: Enhanced translation pipeline
+  - `optimized_config.yaml`: Configuration optimization
+- **v2/**: Ultra-optimized versions
+  - `ultra_optimized_hotel_scraper.py`: High-performance scraping engine
+  - `ultra_optimized_nlp_pipeline.py`: Advanced NLP processing
+  - `ultra_optimized_preprocessing.py`: Maximum efficiency preprocessing
+  - `ultra_optimized_translation.py`: Ultra-fast translation pipeline
+- **Root-level Development Files**: Working versions for testing and development
+
 ## Deployment Options
 
-### Local Development
-- SQLite for local testing
-- Standalone Airflow instance
-- Local Streamlit server
+### Local Development Environment
+- **Project Location**: `/home/kariem/newapproach/`
+- **Virtual Environment**: `airflow_env/` (primary) or `airflow_venv/` (alternative)
+- **Database**: SQLite for local testing, PostgreSQL for production
+- **Airflow Instance**: Standalone Airflow instance
+- **Dashboard**: Local Streamlit server
+- **Activation Script**: `activate_venv.sh` for quick environment setup
 
 ### Production Deployment
-- PostgreSQL cloud database
-- Distributed Airflow cluster
-- Containerized web applications
-- Load balancer configuration
+- **Database**: PostgreSQL cloud database (Neon Cloud)
+- **Airflow**: Distributed Airflow cluster
+- **Web Applications**: Containerized applications
+- **Load Balancer**: Configuration ready for scaling
+- **Environment Management**: Multiple configuration presets available
 
 ## Target Stakeholders
 
@@ -281,16 +337,18 @@ python manual_scraper.py --preset production
 | Phase 1 | v0.1 | Initial project setup & architecture | ✅ **Completed** |
 | Phase 2 | v0.2 | Local data scraping implementation | ✅ **Completed** |
 | Phase 3 | v0.3 | NLP preprocessing & sentiment analysis | ✅ **Completed** |
-| Phase 4 | v1.0 | Cloud database deployment | ✅ **Completed** |
-| Phase 5 | v1.2 | ~~Cloud-based data processing~~ | ❌ **Cancelled** |
-| Phase 6 | v2.0 | Full web application deployment | ✅ **Completed** |
+| Phase 4 | v1.0 | Cloud database deployment & optimization v1 | ✅ **Completed** |
+| Phase 5 | v1.2 | Performance optimization iterations | ✅ **Completed** |
+| Phase 6 | v2.0 | Ultra-optimized implementations | ✅ **Completed** |
+| Phase 7 | v2.1 | Full web application deployment | ✅ **Completed** |
 
-### 🚧 Current Development (v2.1)
+### 🚧 Current Development (v2.2)
+- [x] **Multiple DAG Versions**: Optimized and ultra-optimized Airflow DAGs
+- [x] **Comprehensive Documentation**: Full system documentation and diagrams
+- [x] **Performance Testing**: Ultra-optimization validation and testing
 - [ ] **Enhanced Analytics**: Advanced statistical analysis and reporting
 - [ ] **Real-time Processing**: Live data streaming and processing
 - [ ] **API Development**: RESTful API for external integrations
-- [ ] **Mobile Dashboard**: Responsive mobile interface
-- [ ] **Performance Optimization**: System performance enhancements
 
 ### 🔮 Future Enhancements (v3.0+)
 - [ ] **AI-Powered Insights**: Machine learning recommendation engine
